@@ -1,0 +1,12 @@
+target/
+*.class
+.settings/
+.project
+.classpath
+.factorypath
+.idea/
+*.iml
+.DS_Store
+*.log
+tmp/
+.gemini/

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Resume Builder System</display-name>
+
+    <!-- Welcome File -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Auth Filter -->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.resumebuilder.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Login Controller -->
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>com.resumebuilder.controller.LoginController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <!-- Register Controller -->
+    <servlet>
+        <servlet-name>RegisterController</servlet-name>
+        <servlet-class>com.resumebuilder.controller.RegisterController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterController</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <!-- Logout Controller -->
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>com.resumebuilder.controller.LogoutController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- Dashboard Controller -->
+    <servlet>
+        <servlet-name>DashboardController</servlet-name>
+        <servlet-class>com.resumebuilder.controller.DashboardController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DashboardController</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <!-- Resume Controller (delete) -->
+    <servlet>
+        <servlet-name>ResumeController</servlet-name>
+        <servlet-class>com.resumebuilder.controller.ResumeController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResumeController</servlet-name>
+        <url-pattern>/resume</url-pattern>
+    </servlet-mapping>
+
+    <!-- Resume Form Controller (create + update) -->
+    <servlet>
+        <servlet-name>ResumeFormController</servlet-name>
+        <servlet-class>com.resumebuilder.controller.ResumeFormController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResumeFormController</servlet-name>
+        <url-pattern>/resume-form</url-pattern>
+    </servlet-mapping>
+
+    <!-- Resume Preview Controller (read) -->
+    <servlet>
+        <servlet-name>ResumePreviewController</servlet-name>
+        <servlet-class>com.resumebuilder.controller.ResumePreviewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResumePreviewController</servlet-name>
+        <url-pattern>/resume-preview</url-pattern>
+    </servlet-mapping>
+
+    <!-- Admin Controller -->
+    <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>com.resumebuilder.controller.AdminController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <!-- Error Pages -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/views/error.jsp</location>
+    </error-page>
+
+</web-app>
