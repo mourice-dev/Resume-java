@@ -105,6 +105,17 @@ public class ResumeDAO {
         }
     }
 
+    // UPDATE STATUS (ADMIN/SYSTEM)
+    public boolean updateResumeStatus(int id, String status) throws SQLException {
+        String sql = "UPDATE resumes SET status = ?, updated_at = NOW() WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, status);
+            ps.setInt(2, id);
+            return ps.executeUpdate() > 0;
+        }
+    }
+
     // SEARCH - by text (character & number), date, and time
     public List<Resume> searchResumes(int userId, String searchText, String dateFilter, String timeFrom, String timeTo)
             throws SQLException {

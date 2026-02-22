@@ -24,12 +24,23 @@ public class AdminController extends HttpServlet {
         }
 
         // Get search parameters
-        String search = request.getParameter("search");
-        String dateFilter = request.getParameter("dateFilter");
-        String timeFrom = request.getParameter("timeFrom");
-        String timeTo = request.getParameter("timeTo");
+        String action = request.getParameter("action");
+        String idParam = request.getParameter("id");
+        String status = request.getParameter("status");
 
         try {
+            if ("updateStatus".equals(action) && idParam != null && status != null) {
+                resumeDAO.updateResumeStatus(Integer.parseInt(idParam), status);
+                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
+                return;
+            }
+
+            // Get search parameters
+            String search = request.getParameter("search");
+            String dateFilter = request.getParameter("dateFilter");
+            String timeFrom = request.getParameter("timeFrom");
+            String timeTo = request.getParameter("timeTo");
+
             List<Resume> resumes;
 
             // Check if any search filter is active
